@@ -1,6 +1,6 @@
 import './Expenses.scss'
 import ExpenseItem from './ExpenseItem';
-import Card from './Card.js'
+import Card from '../UI/Card'
 
 const Expenses = ({items}) => { //destructuring props
     return (
