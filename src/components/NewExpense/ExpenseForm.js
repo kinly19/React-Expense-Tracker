@@ -1,24 +1,95 @@
+import { useState } from 'react';
 import './ExpenseForm.scss';
 
 const ExpenseForm = () => {
+
+    //multiple state approch 
+    const [inputTitle,setInputTitle] = useState ('');
+    const [inputAmount, setInputAmount] = useState('');
+    const [inputDate, setInputDate] = useState('');
+
+    //single state approch 
+    // const [userInput, setUserInput] = useState({
+    //     inputTitle: '',
+    //     inputAmount:'',
+    //     inputDate:''
+    // });
+
+    const titleChangeHandler = (e) => {
+      //when using a single state approach with multiple values, we set the value we want to update
+      //but we also need to copy the other values which we are not updating.
+      //code below will work, but... the practice is not the best and we could(most likly)be using an outdated state(stale state)
+      // setUserInput({
+      //     ...userInput,
+      //     inputTitle:e.target.value
+      // });
+
+      //safer way from the above when the state change depends on its own previous value!, react will make sure the state it gives us will always be the latest state. (updater function)
+      // setUserInput((prevState) => {
+      //     return {...prevState, inputTitle: e.target.value}
+      // });
+
+      setInputTitle(e.target.value);
+    };
+
+    const amountChangeHandler = (e) => {
+      setInputAmount(e.target.value);
+    };
+
+    const dateChangeHandler = (e) => {
+      setInputDate(e.target.value);
+    };
+    
+    const submitHandler = (event) => {
+      event.preventDefault(); //stops the default action from running(stops page from refreshing)
+
+      const expenseData = {
+        //taking the entered data from form and doing something with it
+        title: inputTitle,
+        amount: inputAmount,
+        date: new Date(inputDate),
+      };
+
+      console.log(expenseData);
+      setInputTitle("");
+      setInputAmount("");
+      setInputDate("");
+    };
+
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" />
+          <input 
+            type="text" 
+            value={inputTitle} 
+            onChange={titleChangeHandler} 
+          />
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
-          <input type="number" min="0.01" step="0.01"/>
+          <input
+            type="number"
+            min="0.01"
+            step="0.01"
+            value={inputAmount}
+            onChange={amountChangeHandler}
+          />
         </div>
         <div className="new-expense__control">
           <label>Date</label>
-          <input type="date" min="2019-01-01" max="2022-12-31"/>
+          <input
+            type="date"
+            min="2019-01-01"
+            max="2022-12-31"
+            value={inputDate}
+            onChange={dateChangeHandler}
+          />
         </div>
       </div>
       <div className="new-expense__actions">
-        <button type="submit">Add Expense</button>    
+        <button type="submit">Add Expense</button>
       </div>
     </form>
   );
