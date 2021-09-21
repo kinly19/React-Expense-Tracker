@@ -4,7 +4,6 @@ import Card from '../UI/Card'
 
 const ExpenseItem = ({ date, title, amount }) => {
   //destructuring props.
-
   //take the data below and move that into App.js and pass the data from App.js back into here via props
   // const expenseDate = new Date (2021, 9, 15);
   // const expenseTitle = 'Car insurance';
