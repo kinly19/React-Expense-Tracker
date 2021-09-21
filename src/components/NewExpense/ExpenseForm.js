@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './ExpenseForm.scss';
 
-const ExpenseForm = () => {
+const ExpenseForm = ({onSaveExpenseData}) => {
 
     //multiple state approch 
     const [inputTitle,setInputTitle] = useState ('');
@@ -50,7 +50,7 @@ const ExpenseForm = () => {
         date: new Date(inputDate),
       };
 
-      console.log(expenseData);
+      onSaveExpenseData(expenseData) //or props.onSaveExpenseData
       setInputTitle("");
       setInputAmount("");
       setInputDate("");
