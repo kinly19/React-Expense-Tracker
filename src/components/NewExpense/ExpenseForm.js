@@ -3,12 +3,12 @@ import './ExpenseForm.scss';
 
 const ExpenseForm = ({onSaveExpenseData}) => {
 
-    //multiple state approch 
+    //multiple state approach 
     const [inputTitle,setInputTitle] = useState ('');
     const [inputAmount, setInputAmount] = useState('');
     const [inputDate, setInputDate] = useState('');
 
-    //single state approch 
+    //single state approach 
     // const [userInput, setUserInput] = useState({
     //     inputTitle: '',
     //     inputAmount:'',
