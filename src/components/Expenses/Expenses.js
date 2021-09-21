@@ -12,33 +12,23 @@ const Expenses = ({items}) => { //destructuring props
     setFilteredYear(seletedYear); //storing data from function to state
   }
 
-    return (
-      <div>
-        <Card className="expenses">
-          <ExpenseFilter defaultYear ={filteredYear} onFilterChange={filterChangeHandler}/>
+  return (
+    <div>
+      <Card className="expenses">
+        <ExpenseFilter
+          defaultYear={filteredYear}
+          onFilterChange={filterChangeHandler}
+        />
+        {items.map((expenses) => (
           <ExpenseItem
-            title={items[0].title}
-            amount={items[0].amount}
-            date={items[0].date}
+            title={expenses.title}
+            amount={expenses.amount}
+            date={expenses.date}
           />
-          <ExpenseItem
-            title={items[1].title}
-            amount={items[1].amount}
-            date={items[1].date}
-          />
-          <ExpenseItem
-            title={items[2].title}
-            amount={items[2].amount}
-            date={items[2].date}
-          />
-          <ExpenseItem
-            title={items[3].title}
-            amount={items[3].amount}
-            date={items[3].date}
-          />
-        </Card>
-      </div>
-    );
+        ))}
+      </Card>
+    </div>
+  );
 }
 
 export default Expenses
