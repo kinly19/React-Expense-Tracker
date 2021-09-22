@@ -7,7 +7,8 @@ import ExpenseFilter from './ExpenseFilter';
 const Expenses = ({items}) => { //destructuring props
 
   const [filteredYear, setFilteredYear] = useState('2020'); 
-
+  const filteredExpenses = items.filter(expenses => expenses.date.getFullYear().toString() === filteredYear);//filtered data from app.js
+  
   const filterChangeHandler = (seletedYear) => { //passing data from child to parent
     setFilteredYear(seletedYear); //storing data from function to state
   }
@@ -19,13 +20,27 @@ const Expenses = ({items}) => { //destructuring props
           defaultYear={filteredYear}
           onFilterChange={filterChangeHandler}
         />
-        {items.map((expenses) => (
+        {filteredExpenses.map((expenses) => (
           <ExpenseItem
+            key={expenses.id}
             title={expenses.title}
             amount={expenses.amount}
             date={expenses.date}
           />
         ))}
+
+        {/*Another way of filtering and maping through list*/}
+        {/* {items.filter((filteredItem) => {
+          return filteredItem.date.getFullYear().toString() === filteredYear
+        }).map((filteredItem) => 
+          <ExpenseItem 
+            key={filteredItem.id}
+            title={filteredItem.title}
+            amount={filteredItem.amount}
+            date={filteredItem.date}
+          />
+        )} */}
+
       </Card>
     </div>
   );
