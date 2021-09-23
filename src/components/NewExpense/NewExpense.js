@@ -19,11 +19,11 @@ const NewExpense = ({onAddExpense}) => {
     };
 
     //pass this function down to ExpenseForm
-    const handleToggle = (toggleStatus) => {
+    const handleCloseForm = (toggleStatus) => {
         setIsToggle(toggleStatus);
     }
 
-    const handleForm = () => {
+    const handleShowForm = () => {
         setIsToggle(true)
     }
 
@@ -34,8 +34,8 @@ const NewExpense = ({onAddExpense}) => {
 
     return (
         <div className="new-expense">
-            {!isToggle && <button onClick={handleForm}>Add new expense </button>}
-            {isToggle && <ExpenseForm onSaveExpenseData={onSaveExpenseDataHandler} onToggle={handleToggle}/>}
+            {!isToggle && <button onClick={handleShowForm}>Add new expense </button>}
+            {isToggle && <ExpenseForm onSaveExpenseData={onSaveExpenseDataHandler} onCancel={handleCloseForm}/>}
         </div>
     )
 };
