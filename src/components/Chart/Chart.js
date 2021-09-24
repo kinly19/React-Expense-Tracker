@@ -7,10 +7,10 @@ const Chart = ({ dataPoints }) => {
     <div className="chart">
       {dataPoints.map((dataPoint) => (
         <ChartBar
-          key={dataPoint.lable}
+          key={dataPoint.label}
           value={dataPoint.value}
-          maxValue={null}
-          lable={dataPoint.lable}
+          maxValue={totalMax}
+          label={dataPoint.label}
         />
       ))}
     </div>
