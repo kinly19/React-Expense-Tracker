@@ -4,7 +4,8 @@ import ChartBar from './ChartBar';
 
 const Chart = ({ dataPoints }) => {
 
-    const dataPointValues = dataPoints.map(dataPoint => dataPoint.value); //change datapoint object to just a number we can use
+    //go through all the months from ExpensesChart.js and find the biggest value across all months and show that value
+    const dataPointValues = dataPoints.map(dataPoint => dataPoint.value); //change datapoint object from (ExpensesChart.js)to just a number we can use
     const totalMax = Math.max(...dataPointValues); //spread operator to pull out all the array elements and add them as standalone arguments to this max method.
 
   return (
