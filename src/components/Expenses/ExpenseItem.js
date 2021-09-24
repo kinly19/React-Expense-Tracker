@@ -11,14 +11,16 @@ const ExpenseItem = ({ date, title, amount }) => {
 
   return (
     //can only have one! root element in this statement, but can wrap inside of another opening and closing div to work around it.
-    <Card className="expense-item">
-        <ExpenseDate date={date}/> {/* date comes from app.js but we are also passing that down into ExpenseDate component */}
-      <div className="expense-item__description">
-        <h2>{title}</h2>
-        <div className="expense-item__price">£{amount}</div>
-        {/* without destructuring (props.amount)*/}
-      </div>
-    </Card>
+    <li>
+      <Card className="expense-item">
+          <ExpenseDate date={date}/> {/* date comes from app.js but we are also passing that down into ExpenseDate component */}
+        <div className="expense-item__description">
+          <h2>{title}</h2>
+          <div className="expense-item__price">£{amount}</div>
+          {/* without destructuring (props.amount)*/}
+        </div>
+      </Card>
+    </li>
   );
 }; 
 
