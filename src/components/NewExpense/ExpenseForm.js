@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './ExpenseForm.scss';
 
-const ExpenseForm = ({onSaveExpenseData}) => {
+const ExpenseForm = ({onSaveExpenseData, onCancel}) => {
 
     //multiple state approach 
     const [inputTitle,setInputTitle] = useState ('');
@@ -54,7 +54,13 @@ const ExpenseForm = ({onSaveExpenseData}) => {
       setInputTitle("");
       setInputAmount("");
       setInputDate("");
+      onCancel(false);
     };
+
+    const cancelFormHandler = (event) => {
+      event.preventDefault();
+      onCancel(false);
+    }
 
   return (
     <form onSubmit={submitHandler}>
@@ -63,6 +69,7 @@ const ExpenseForm = ({onSaveExpenseData}) => {
           <label>Title</label>
           <input 
             type="text" 
+            required
             value={inputTitle} 
             onChange={titleChangeHandler} 
           />
@@ -71,6 +78,7 @@ const ExpenseForm = ({onSaveExpenseData}) => {
           <label>Amount</label>
           <input
             type="number"
+            required
             min="0.01"
             step="0.01"
             value={inputAmount}
@@ -81,6 +89,7 @@ const ExpenseForm = ({onSaveExpenseData}) => {
           <label>Date</label>
           <input
             type="date"
+            required
             min="2019-01-01"
             max="2022-12-31"
             value={inputDate}
@@ -90,6 +99,7 @@ const ExpenseForm = ({onSaveExpenseData}) => {
       </div>
       <div className="new-expense__actions">
         <button type="submit">Add Expense</button>
+        <button onClick={cancelFormHandler}>Cancel</button>
       </div>
     </form>
   );
