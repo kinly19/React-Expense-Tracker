@@ -3,6 +3,7 @@ import './Expenses.scss'
 import Card from '../UI/Card'
 import ExpenseFilter from './ExpenseFilter';
 import ExpensesList from './ExpensesList';
+import ExpensesChart from './ExpensesChart';
 
 const Expenses = ({items}) => { //destructuring props
 
@@ -35,7 +36,8 @@ const Expenses = ({items}) => { //destructuring props
           defaultYear={filteredYear}
           onFilterChange={filterChangeHandler}
         />
-        {<ExpensesList items={filteredExpenses}/>}
+        <ExpensesChart expenses={filteredExpenses}/>
+        <ExpensesList items={filteredExpenses}/>
         
         {/*different ways to output conditional content */} 
         {/* use a variable which holds JSX content to be displayed*/}
